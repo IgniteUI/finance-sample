@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9;">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <!--<link href="igniteui/css/structure/infragistics.css" rel="stylesheet" />
+    <link href="igniteui/css/themes/metro/infragistics.theme.css" rel="stylesheet" />
+    <link href="assets/css/media-queries.css" rel="stylesheet" /> -->
+</head>
+<body> 
+    <header>
+        <img src="assets/images/logo.png">
+        <span id="js-about" class="icon-about ui-sprite"></span>
+        <span id="js-info" class="icon-info ui-sprite"></span>
+        <span id="js-chart-switch" class="icon-chart-switch ui-sprite"></span>
+    </header>
+    <div style="display: none" id="seriesSwitch">
+        <ul id="selectable"> 
+            <!-- Using attribute selectors for these - should the data attributes be changed, make changes in css accordingly. -->
+            <li class="ui-selected" data-type="area"><span>Area</span></li>
+            <li data-type="financial" data-displaytype="candlestick"><span>Candlestick</span></li>
+            <li data-type="financial" data-displaytype="ohlc"><span>OHLC</span></li>
+            <li data-type="line"><span>Line</span></li>
+        </ul>
+    </div>
+    <div style="display: none" id="info-screen">
+    </div>
+    <div id="tabs">
+        <ul>
+            <li><a id="tab1Name" href="#tabs-1"></a></li>
+        </ul>
+        <div id="tabs-1">
+            <!-- BEGIN MAIN LAYOUT -->
+            <div id="stockDetails" class="values-container"></div>
+            <span class="stock-time"><span id="date"></span><span id="clock"></span></span>
+            <div id="chartContainer">
+                <div id="priceChart">
+                </div>
+            </div>
+
+            <div class="indicator-period">
+                <a href="#" id="js-indicator-period">
+                    <span class="ui-sprite icon-gear"></span>
+                    <span id="indicator-period-text"></span>
+                    <span id="indicator-type" class="avt-value"></span><span class="avt-value">14</span>
+                </a>
+            </div>
+
+            <div id="indicatorChart"></div>
+
+            <div id="indicatorDialog" style="vertical-align: bottom; display: none;">
+                <label id="js-select-indicator"></label>
+                <div id="indicatorCombo"></div>
+                <p>
+                    <label id="js-period-slider"></label>
+                    <label id="period">14</label>
+                </p>
+                <div id="periodSlider"></div>
+            </div>
+            <div id="volumeChart"></div>
+
+            <div id="zoom"></div>
+            <div id="dialog" style="vertical-align: bottom; display: none;">
+                <label id="js-valid-ticker"></label>
+                <input type="text" id="ticker" />
+                <button type="submit">GO</button>
+                <label id="js-invalid-ticker" class="decrease-value" style="display: none">Invalid Ticker Please Enter A Valid One</label>
+            </div>
+            <div id="noData"></div>
+        </div>
+    </div>
+
+    <!-- END MAIN LAYOUT -->
+    <!-- Start tooltips -->
+    <script id="volumeChartTooltipTemplate" type="text/x-jquery-tmpl">
+        <div id="tooltip">
+            <span> $${item.Volume} </span><br/>
+            <div id="cut"> ${item.Date}</div>
+        </div>
+    </script>
+
+    <script id="tab1Template" type="text/x-jquery-tmpl">
+        ${Symbol} <span class="tab-value">${LastTradeAmount}</span>
+    </script>
+    <!-- Big template for the topmost info, keep scrolling :) -->
+    <script id="stockDetailsTemplate" type="text/x-jquery-tmpl">
+        <div class="company">${Name} (${Symbol})<a href="#" id="js-change-ticker-button"><span class="ui-sprite icon-change-company">&nbsp;</span></a></div>
+        <div class="stock-value">
+            <span class="current-value">${LastTradeAmount}</span>
+            <div class="value-change-container">
+                {{if ${isPositive} == "true"}} 
+                <span class="icon-inscrease-value ui-sprite"></span><span class="increase-value">${Change} (${PercentChange})</span>
+                {{elseif ${isPositive} == "false"}} 
+                <span class="icon-decrease-value ui-sprite"></span><span class="decrease-value">${Change} (${PercentChange})</span>
+                {{else}} 
+                <div class="market-closed">${marketCurrentlyClosed}</div>
+                <span class="inactive-value">${Change} (${PercentChange})</span>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="details">
+
+            <ul class="details-title">
+                <li>${RangeText}</li>
+                <li>${WeeksText}</li>
+                <li>${OpenText}</li>
+                <li>${VolumeText}</li>
+            </ul>
+
+            <ul class="details-value">
+                <li>${DailyRange}</li>
+                <li>${Range52Week}</li>
+                <li>${Open}</li>
+                <li>${Volume}</li>
+            </ul>
+
+            <ul class="details-title">
+                <li>${EbitaText}</li>
+                <li>${EpsText}</li>
+                <li>${MktText}</li>
+                <li>${PeText}</li>
+            </ul>
+
+            <ul class="details-value">
+                <li>${EBITDA}</li>
+                <li>${EarningsPerShare}</li>
+                <li>${MarketCapitalization}</li>
+                <li>${PERatio}</li>
+            </ul>
+
+            <ul class="details-title">
+                <li>${AskText}</li>
+                <li>${BidText}</li>
+                <li>${DailyHighText}</li>
+                <li>${DailyLowText}</li>
+            </ul>
+
+            <ul class="details-value">
+                <li>${Ask}</li>
+                <li>${Bid}</li>
+                <li>${DailyHigh}</li>
+                <li>${DailyLow}</li>
+            </ul>
+
+        </div>
+
+    </script>
+
+    <script src="assets/js/fastclick.js"></script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/jquery-ui-1.10.3.min.js"></script>
+    <script src="assets/js/jquery.animate-enhanced.js"></script>
+    <script src="igniteui/js/infragistics.core.js"></script>
+    <script src="igniteui/js/infragistics.lob.js"></script>
+    <script src="igniteui/js/infragistics.dv.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

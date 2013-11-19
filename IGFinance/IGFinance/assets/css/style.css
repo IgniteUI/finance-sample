@@ -1,0 +1,1512 @@
+﻿/* reset stuff */
+html {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+   list-style: none; 
+}
+
+a:visited,
+a {
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif!important;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    background-color: #191919;
+    color: #fff;
+}
+.ui-widget-content.ui-chart-container {
+    border: none;
+    text-align:center;
+}
+
+.container {
+    width: auto;
+    overflow:auto;
+    padding: 0px;
+}
+
+/* header */
+
+header {
+    height: 44px; 
+    line-height: 44px;
+}
+
+    header img {
+        margin-top: 15px;
+        margin-left: 15px;
+    }
+
+    header .ui-sprite {
+        position: relative;
+        top: 8px; right: 15px;
+        float: right;
+        margin-left: 15px;
+    }
+
+/* series switch */
+
+#seriesSwitch {
+    width: 215px;
+    height: 215px;
+    background-color: rgba(25,25,25,0.99);
+    border: 1px solid #222222;
+    box-shadow: 0 0 35px rgba(0,0,0,0.5);
+    right: 110px;
+    top: 42px;
+    z-index: 9999;
+    padding: .1em;
+    position: absolute;
+}
+
+#seriesSwitch ul {
+    margin: 0;
+    padding: 7px;
+    font-size: 0.625em;
+    text-align: center;
+}
+
+#seriesSwitch li {
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    width: 90px;
+    height: 90px;
+    background-color: #444444;
+    margin: 5px 4px;
+    display: inline-block;
+    background-image: url('../images/ui-sprite.png');
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0 40px #333;
+}
+    #seriesSwitch li.ui-selected {
+        background-color: #00aade;
+        box-shadow: inset 0 0 40px #0087ae;
+        color: rgba(255,255,255,1);
+    }
+
+    #seriesSwitch li:hover {
+        cursor: pointer;
+    }
+
+    #seriesSwitch li span {
+        position: relative;
+        top: 70%;
+    }
+
+    li[data-type="area"] { background-position: 0 -380px;}
+
+    li[data-displaytype="candlestick"] { background-position: 0 -560px;}
+
+    li[data-displaytype="ohlc"] { background-position: 0 -470px;}
+
+    li[data-type="line"] { background-position: 0 -290px;}
+
+/* info screen */
+
+#info-screen {
+    position: absolute;
+    width: 360px;
+    height: 140px;
+    padding: 15px; 
+    font-size: 12px;
+    background-color: #191919;
+    border: 1px solid #272727;
+    color: #999999;
+    right: 70px;
+    box-shadow: 0 0 35px rgba(0, 0, 0, 0.5);
+}
+    #info-screen p:first-child {
+        margin-top: 0;
+    }
+
+    #info-screen p:last-child {
+        margin-bottom: 0;
+    }
+
+/* values */
+
+.values-container {
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0px 0px 0px; 
+}
+
+.stock-value {
+    margin-left: 15px;
+    display: inline-block;
+    float: left;
+}
+
+.stock-time {
+    color: #666666;
+    font-size: 14px;
+    display: inline-block;
+    position: relative;
+    top: -40px;
+    left: 15px;
+}
+
+.inactive-value {
+    color: #666;
+    font-size: 1.625em;
+}
+
+.market-closed {
+    color: #666;
+    font-size: 0.8em;
+    margin-bottom: -5px;
+}
+
+.company {
+    font-size: 1em;
+    line-height: 2em;
+    margin-left: 15px;
+    margin-bottom: -10px;
+}
+
+.current-value {
+    font-size: 3.125em;
+    font-weight: lighter;
+    font-family: 'Open Sans'!important;
+}
+
+.value-change-container {
+
+    display: inline-block;
+}
+
+.increase-value,
+.decrease-value {
+    font-size: 1.875em;
+}
+
+.increase-value {color: #4EA61E;}
+.decrease-value {color: #DF191F;}
+
+#js-invalid-ticker {
+    margin-top: 14px;
+    margin-bottom: 0;
+}
+ 
+.details {
+    height: 100px;
+    float: right;
+    text-align: right;
+    margin-right: 20px;
+    font-size: 0.875em;
+}
+
+    .details ul {
+        text-align: left;
+        padding-left: 20px;
+        list-style: none;
+        font-size: 0.875em;
+        display: inline-block;
+    }
+
+    .details li {
+        margin-bottom: 4px;
+    }
+
+    .details-title {
+        color: #666666;
+    }
+
+/*sprite*/
+
+.ui-sprite {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background-image: url('../images/ui-sprite.png');
+}
+    .ui-sprite:hover {
+        cursor: pointer;
+    }
+
+.icon-change-company { background-position: 0 -192px;}
+.icon-chart-switch { background-position: 0 0;}
+.icon-info { background-position: 0 -64px;}
+.icon-about { background-position: 0 -128px;}
+.icon-gear { background-position: -32px -128px;}
+.icon-down { 
+    background-position: -32px 0;
+    position: relative;
+    top: 10px;
+} 
+
+
+.icon-change-company:hover { background-position: -32px -192px;}
+.icon-chart-switch:hover { background-position: 0 -32px;}
+.icon-info:hover { background-position: 0 -96px;}
+.icon-about:hover { background-position: 0 -160px;}
+.indicator-period:hover .icon-gear { background-position: -32px -160px;}
+
+.icon-inscrease-value { background-position: 0 -257px;}
+.icon-decrease-value { background-position: 0 -224px;}
+.icon-decrease-value,
+.icon-inscrease-value {
+    position: relative;
+    top: 5px;
+    margin-right: -5px;
+}
+
+    .indicator-period a {
+        font-size: 0.813em;
+        color: #FFF;
+        height: 32px;
+        padding: 10px 0px;
+    }
+
+    .indicator-period .icon-gear { 
+        position: relative;
+        top: 11px;
+        margin-left: 5px;
+    }
+
+.avt-value {
+    color: #666666;
+    margin-left: 5px;
+}
+
+/*tooltips*/
+
+#cut {
+    display: none;
+}
+
+.ui-widget-content.ui-chart-tooltip,
+#tooltipTemplate {
+  background-color: #1E1E1E;
+  border: 1px solid #2F2F2F!important; /*needed to override default control behaviour*/
+  box-shadow: 0;
+}
+
+.ui-chart-tooltip ul {
+    margin: 4px;
+    padding: 0px;
+    display: inline-block;
+    font-size: 13px;
+}
+
+.tooltip-titles {
+    color: #666666;
+}
+
+/*
+ * jQuery UI Tabs @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Tabs#theming
+ */
+
+.tab-value {
+    color: #fff;
+}
+
+.ui-tabs {
+    background-color: #232323;
+}
+
+.ui-tabs .ui-tabs-nav {
+    padding: 0;
+    margin: 0;
+    height: 35px;
+    background-color: #191919;
+    border-bottom: 1px solid #303030;
+}
+
+.ui-tabs .ui-tabs-nav li {
+    list-style: none;
+    float: left;
+    position: relative;
+    top: 1px;
+    margin: 0 0.2em 1px 0;
+    border-bottom: 0 !important;
+    padding: 0;
+    white-space: nowrap;
+}
+
+.ui-tabs .ui-tabs-nav li a {
+    float: left;
+    padding: 7px 15px;
+    text-decoration: none;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected {
+    margin-bottom: 0;
+    padding-bottom: 1px;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a,
+.ui-tabs .ui-tabs-nav li.ui-state-disabled a,
+.ui-tabs .ui-tabs-nav li.ui-state-processing a {
+    cursor: text;
+}
+
+.ui-tabs .ui-tabs-nav li a,
+.ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a {
+    cursor: pointer;
+}
+
+/* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel {
+    display: block;
+}
+
+.ui-tabs .ui-tabs-hide {
+    display: none !important;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-state-default {
+    background-color: transparent;
+    background-image: none;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+    border-color: transparent;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-state-default a {
+    color: #b3e6f5;
+    text-shadow: 0 transparent;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-state-hover {
+    background-color: transparent;
+    background-image: none;
+    background-repeat: repeat-x;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-state-hover a {
+    color: white;
+    text-shadow: 0 transparent;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-state-active {
+    background: #232323;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-state-active a {
+    border-top: 4px solid #00aade;
+    color: #00aade;
+    outline: 0;
+}
+
+/*controls a la IG*/
+
+/* IGZOOMBAR */
+.ui-igzoombar-container {
+    /*width: 100%;*/
+    /*height: 100%;*/
+    position: relative;
+}
+
+.ui-igzoombar-scrollbar {
+    background-color: #454545;
+    border-bottom: 1px solid #8c8c8c;
+    border-top: 1px solid #474747;
+}
+
+.ui-igzoombar-scrollbar-thumb {
+    height: 16px;
+    position: absolute;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    text-align:center;
+    line-height: 6px;
+}
+
+.ui-igzoombar-scrollbar-button {
+    width: 16px;
+    height: 16px;
+    margin: 0 0 0 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.ui-igzoombar-scrollbar-button .ui-icon {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+ }
+
+.ui-igzoombar-mask {
+    position: absolute;
+    margin-top: 1px;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%; 
+    cursor: move;
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    /* Needs to be interactable in IE */
+    background:rgba(0,0,0,0);
+    filter:alpha(opacity=0);
+}
+
+.ui-igzoombar-window-grabbing.ui-igzoombar-mask  {
+    cursor: move;
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+.ui-igzoombar-fade {
+    position: relative;
+    background: rgba(0, 0, 0, 0.3);
+    border-color: #666666;
+    border-width: 1px;
+    margin-top: -1px;
+    height: 100%;
+    border-top-style: solid;
+    border-bottom-style: none;
+    cursor: auto;
+}
+
+.ui-igzoombar-fade-left-appendix {
+    float: left;
+    width: 16px;
+    margin-left: -16px;
+}
+
+.ui-igzoombar-fade-right-appendix {
+    float: right;
+    width: 16px;
+    margin-right: -16px;
+}
+
+.ui-igzoombar-fade-left {
+    float: left;
+    border-right-style: solid;
+    border-left-style: none;
+}
+
+.ui-igzoombar-fade-right {
+    float: right;
+    border-right-style: none;
+    border-left-style: solid;
+}
+
+.ui-igzoombar-window-handle {
+    width: 8px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    cursor: e-resize;
+    box-shadow: 0 0 4px rgba(0,0,0,0.7);
+}
+
+.ui-igzoombar-window-handle-left {
+    left: 100%;
+    margin-left: -4px;
+    text-align:center;
+    line-height: 11px;
+}
+
+.ui-igzoombar-window-handle-right {
+    left: 0%;
+    margin-left: -5px;
+    text-align:center;
+    line-height: 11px;
+}
+
+.ui-igzoombar-window-handle-left:after,
+.ui-igzoombar-window-handle-right:after {
+    content:"\0131\0131";
+    font-size: 11px;
+}
+.ui-igzoombar-scrollbar-thumb:after {
+    content:"\0131\0131\0131";
+    font-size: 11px;
+    cursor: default;
+}
+
+.ui-igzoombar-scrollbar-thumb,
+.ui-igzoombar-window-handle
+{
+    /* default colours */
+    background-color: #666666;
+    background-image: none;
+    background-repeat: no-repeat;
+    border: 1px solid #666666;
+    color: #222222;
+    font-weight: normal;
+}
+
+.ui-igzoombar-scrollbar-thumb.ui-state-hover,
+.ui-igzoombar-window-handle.ui-state-hover
+{
+    /* default colours */
+    background-color: #666666;
+}
+
+.ui-igzoombar-window-handle.ui-state-hover {
+    background-color: red!important;
+}
+
+/* IGCHART */
+
+.ui-chart-container
+{
+    font-size: 12px;
+}
+
+.ui-chart-axis
+{
+    border-color: rgba();
+    background-color: #999;
+}
+
+.ui-chart-legend-items-list
+{
+    padding: 0;
+    margin: 5px;
+}
+
+.ui-chart-legend-item-text
+{
+    vertical-align: middle;
+}
+
+.ui-chart-legend-item-badge
+{
+    vertical-align: middle;   
+}
+
+.ui-chart-tooltip
+{
+    padding:3px;
+}
+
+.ui-chart-default-tooltip-content {
+    white-space: nowrap;
+}
+
+.ui-chart-pointer-tooltip-content-container {
+    margin: 3px;
+}
+
+.ui-chart-pointer-tooltip {
+    background-color: white;
+    border-color: rgb(77,77,77);
+    border-radius: 4px;
+    border-width: 1px;
+}
+
+.touch .ui-chart-slider 
+{
+ width:90%;    
+ padding: 0 30px;
+}
+
+
+.ui-chart-container {
+    font-size: 12px;
+    border-width: 1px;
+}
+
+.ui-horizontal-axis-labels {
+    font-size: 11px;
+    vertical-align: top;
+    color: #999999;
+}
+
+.ui-vertical-axis-labels {
+    font-size: 11px;
+    text-align: right;
+    color: #999999;
+}
+
+
+.ui-angular-axis-labels {
+    margin: 5px;
+    color: #9B9B9B;
+}
+
+.ui-radial-axis-labels {
+    vertical-align: top;
+    margin: 5px;
+    color: #9B9B9B;
+}
+
+.ui-chart-category-axis-tick {
+    height: 0px;
+    color: #9B9B9B;
+}
+.ui-chart-area-fill-opacity {
+    opacity: 0.7;
+}
+
+.ui-chart-aligned-gridlines {
+    visibility: visible;
+}
+
+.ui-chart-axis-stroke, .ui-chart-axis-major-line {
+    /* transparent is treated as auto */
+    border-color: transparent;
+}
+
+.ui-chart-tooltip {
+    -moz-box-shadow: 0 0 2px #555555;
+    -webkit-box-shadow: 0 0 2px #555555;
+    box-shadow: 0 0 2px #555555;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-family: Verdana, Helvetica, sans-serif;
+}
+
+/***********/
+/* igChart */
+/********** */
+.ui-chart-palette-1 {
+  border-color: #2380A8!important;
+  background-color: #44ACD6!important;
+}
+.ui-chart-palette-2 {
+  border-color: #333333!important;
+  background-color: #494949!important;
+}
+.ui-chart-palette-3 {
+  border-color: #808080!important;
+  background-color: #A8A8A8!important;
+}
+.ui-chart-palette-4 {
+  border-color: #185170!important;
+  background-color: #216E99!important;
+}
+.ui-chart-palette-5 {
+  border-color: #879922!important;
+  background-color: #A4bA29!important;
+}
+.ui-chart-palette-6 {
+  border-color: #FBA609!important;
+  background-color: #FDBD48!important;
+}
+.ui-chart-palette-7 {
+  border-color: #FF5559!important;
+  background-color: #FF6A6F!important;
+}
+.ui-chart-palette-8 {
+  border-color: #8856b1!important;
+  background-color: #9E73C1!important;
+}
+.ui-chart-palette-9 {
+  border-color: #e3720c!important;
+  background-color: #F79036!important;
+}
+.ui-chart-palette-10 {
+  border-color: #582c7d!important;
+  background-color: #793BAC!important;
+}
+.ui-chart-palette-11 {
+  border-color: #386a23!important;
+  background-color: #48892D!important;
+}
+.ui-chart-palette-12 {
+  border-color: #C62D36!important;
+  background-color: #D3404B!important;
+}
+
+
+/*
+ * jQuery UI Slider @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider {
+  position: relative;
+  text-align: left;
+  border: 0px none;
+}
+
+.ui-state-focus .ui-slider-handle {
+  border: 0px none!important;
+}
+
+.ui-slider .ui-slider-handle {
+  background-color: #CCCCCC;
+  position: absolute;
+  z-index: 2;
+  width: 8px;
+  height: 8px;
+  padding: 8px;
+  right: -8px;
+  cursor: pointer;
+}
+
+.ui-slider .ui-slider-handle:focus {
+    outline: none;
+}
+
+.ui-slider .ui-slider-handle.ui-state-hover {
+    background-color: #00AADE;
+}
+
+.ui-slider .ui-slider-handle.ui-state-active {
+    background-color: #00AADE;
+    outline: none;
+}
+
+.ui-slider .ui-state-hover {
+  background-position: 0px 0px !important;
+}
+
+.ui-slider .ui-slider-range {
+  position: absolute;
+  z-index: 1;
+  font-size: 0.7em;
+  display: block;
+  border: 0;
+}
+
+.ui-slider .ui-state-default {
+  border: 0px none;
+}
+
+.ui-slider-horizontal {
+  height: 24px;
+  background-color: #777777!important;
+  border: 0!important;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+  margin-left: -7px;
+}
+
+.ui-slider-horizontal .ui-slider-range {
+  top: 0;
+  height: 100%;
+  background-image: none;
+  background-position: 0px -4px;
+  background-repeat: repeat-x;
+}
+
+.ui-slider-horizontal .ui-slider-range-min {
+  left: 0;
+}
+
+.ui-slider-horizontal .ui-slider-range-max {
+  right: 0;
+}
+
+.ui-slider-vertical {
+  width: 5px;
+  height: 100px;
+  background-image: none;
+  background-position: -4px 0px;
+  background-repeat: repeat-y;
+}
+
+.ui-slider-vertical .ui-slider-handle {
+  left: -5px;
+  margin-left: 0;
+  margin-bottom: -7px;
+  background-position: 0px -66px !important;
+}
+
+.ui-slider-vertical .ui-state-hover {
+  background-position: 0px -43px !important;
+}
+
+.ui-slider-vertical .ui-slider-range {
+  left: 0;
+  width: 100%;
+  background-image: none;
+  background-position: 0px 0px;
+  background-repeat: repeat-y;
+}
+
+.ui-slider-vertical .ui-slider-range-min {
+  bottom: 0;
+}
+
+.ui-slider-vertical .ui-slider-range-max {
+  top: 0;
+}
+
+/* COMBO */ 
+
+
+.ui-igcombo {
+ padding: 0px !important;
+}
+.ui-igcombo .ui-icon {
+ float: none
+}
+.ui-igcombo-field,
+.ui-igcombo .ui-igcombo-field {
+ left: auto !important;
+ top: auto !important;
+ margin: 0px !important;
+ border: 0;
+ outline: 0;
+ padding: 1px 2px 1px 2px;
+}
+.ui-igcombo-field::-ms-clear
+{
+ display: none;
+}
+.ui-igcombo-nulltext {
+ color: #999999;
+}
+.ui-igcombo-button {
+ display: inline-block;
+ cursor: pointer;
+ overflow: hidden;
+}
+.ui-igcombo .ui-igcombo-button-rtl,
+.ui-widget-content .ui-igcombo-button-rtl,
+.ui-igcombo-button-rtl {
+ border-width: 0px 1px 0px 0px;
+}
+.ui-igcombo .ui-igcombo-button-ltr,
+.ui-widget-content .ui-igcombo-button-ltr,
+.ui-igcombo-button-ltr {
+ border-width: 0px 0px 0px 1px;
+}
+.ui-igcombo-clear,
+.ui-widget-content .ui-igcombo-clear,
+.ui-igcombo .ui-igcombo-clear {
+ display: inline-block;
+ cursor: pointer;
+ background: none;
+ overflow: hidden;
+ border: 0;
+}
+.ui-igcombo-list,
+.ui-igcombo .ui-igcombo-list {
+ z-index: 100000;
+ font-size: 0.95em;
+ background-image: none;
+ border: 1px solid #333;
+}
+.ui-igcombo-listitemholder,
+.ui-igcombo-list .ui-igcombo-listitemholder {
+ margin: 0;
+ padding: 0;
+ border: none;
+ background: none;
+}
+.ui-igcombo-listitem,
+.ui-igcombo-list .ui-igcombo-listitem {
+ list-style-type: none;
+ margin: 0;
+ overflow: hidden;
+ white-space: nowrap;
+ border: 0;
+ background-image: none;
+ float: left;
+ padding:0 0.2em;
+ cursor: default;
+ position: relative;
+ outline: 0;
+}
+.ui-igcombo-listitem-match {
+ font-weight: bold
+}
+.ui-igcombo-checkbox {
+ position: absolute;
+ cursor: pointer
+}
+.ui-igcombo-listitemtextwithcheckbox {
+ display: block;
+ position: relative;
+}
+.ui-igcombo-waitfiltering {
+ opacity: 0.5;
+ filter: alpha(opacity=50);
+}
+.ui-igcombo-waitfiltering input {
+ background: #d8d8d8;
+}
+.ui-igcombo-buttonicon,
+.ui-igcombo-clearicon,
+.ui-igcombo-checkbox-on {
+ display: block
+}
+
+#indicatorCombo {
+    margin-top: 10px;
+    border: 1px solid #333333;
+    background-color: #111;
+}
+
+.ui-igcombo-field, .ui-igcombo .ui-igcombo-field,
+.ui-igcombo-listitemholder {
+    background-color: #111;
+    color: #fff;
+    padding: 10px;
+}
+
+.ui-igcombo-listitem, .ui-igcombo-list .ui-igcombo-listitem {
+    background-color: #111;
+    color: #fff;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.ui-igcombo-listitem-hover {
+    background-color: #00AADE!important;
+    cursor: pointer!important;
+}
+
+
+
+/* Icons
+----------------------------------*/
+/* states and images */
+.ui-icon {
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+}
+
+/* Misc visuals
+----------------------------------*/
+/* Corner radius 
+.ui-corner-tl {
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  -o-border-top-left-radius: 0;
+  -ms-border-top-left-radius: 0;
+  -khtml-border-top-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.ui-corner-tr {
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  -o-border-top-right-radius: 0;
+  -ms-border-top-right-radius: 0;
+  -khtml-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ui-corner-bl {
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -o-border-bottom-left-radius: 0;
+  -ms-border-bottom-left-radius: 0;
+  -khtml-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.ui-corner-br {
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -o-border-bottom-right-radius: 0;
+  -ms-border-bottom-right-radius: 0;
+  -khtml-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ui-corner-top {
+  -moz-border-radius-topright: 0;
+  -webkit-border-top-right-radius: 0;
+  -o-border-top-right-radius: 0;
+  -ms-border-top-right-radius: 0;
+  -khtml-border-top-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ui-corner-bottom {
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -o-border-bottom-right-radius: 0;
+  -ms-border-bottom-right-radius: 0;
+  -khtml-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ui-corner-right {
+  -moz-border-radius-bottomright: 0;
+  -webkit-border-bottom-right-radius: 0;
+  -o-border-bottom-right-radius: 0;
+  -ms-border-bottom-right-radius: 0;
+  -khtml-border-bottom-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ui-corner-left {
+  -moz-border-radius-bottomleft: 0;
+  -webkit-border-bottom-left-radius: 0;
+  -o-border-bottom-left-radius: 0;
+  -ms-border-bottom-left-radius: 0;
+  -khtml-border-bottom-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.ui-corner-all {
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  -o-border-radius: 0 !important;
+  -ms-border-radius: 0 !important;
+  -khtml-border-radius: 0 !important;
+  border-radius: 0 !important;
+}*/
+
+/* Overlays */
+.ui-widget-overlay {
+  background: #222222;
+  opacity: 0.7;
+  filter: Alpha(Opacity=70) !important;
+  /*important needed for ie7 and ie8*/
+}
+
+.ui-widget-shadow {
+  margin: -5px 0 0 -5px;
+  padding: 5px;
+  background-color: transparent;
+  background-image: none;
+  background-repeat: repeat-x;
+  background-position: 50% 50%;
+  opacity: 0.2;
+  filter: Alpha(Opacity=20);
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/*
+ * jQuery UI Resizable @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Resizable#theming
+ */
+.ui-resizable {
+  position: relative;
+}
+
+.ui-resizable-handle {
+  position: absolute;
+  font-size: 0.1px;
+  z-index: 99999;
+  display: block;
+}
+
+.ui-resizable-disabled .ui-resizable-handle,
+.ui-resizable-autohide .ui-resizable-handle {
+  display: none;
+}
+
+.ui-resizable-n {
+  cursor: n-resize;
+  height: 7px;
+  width: 100%;
+  top: -5px;
+  left: 0;
+}
+
+.ui-resizable-s {
+  cursor: s-resize;
+  height: 7px;
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+}
+
+.ui-resizable-e {
+  cursor: e-resize;
+  width: 7px;
+  right: -5px;
+  top: 0;
+  height: 100%;
+}
+
+.ui-resizable-w {
+  cursor: w-resize;
+  width: 7px;
+  left: -5px;
+  top: 0;
+  height: 100%;
+}
+
+.ui-resizable-se {
+  cursor: se-resize;
+  width: 12px;
+  height: 12px;
+  right: 1px;
+  bottom: 1px;
+}
+
+.ui-resizable-sw {
+  cursor: sw-resize;
+  width: 9px;
+  height: 9px;
+  left: -5px;
+  bottom: -5px;
+}
+
+.ui-resizable-nw {
+  cursor: nw-resize;
+  width: 9px;
+  height: 9px;
+  left: -5px;
+  top: -5px;
+}
+
+.ui-resizable-ne {
+  cursor: ne-resize;
+  width: 9px;
+  height: 9px;
+  right: -5px;
+  top: -5px;
+}
+
+/*
+ * jQuery UI Selectable @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Selectable#theming
+ */
+.ui-selectable-helper {
+  position: absolute;
+  z-index: 100;
+  border: 1px dotted black;
+}
+
+/*
+ * jQuery UI Dialog @VERSION
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Dialog#theming
+ */
+
+    .ui-dialog-wrap {
+        margin: 40px 50px 0px 40px;
+        color: #fff;
+    }
+        .ui-dialog-wrap h1 {
+            margin: 0;
+            font-size: 1.5em;
+            font-weight: 300;
+        } 
+
+        .ui-dialog-wrap p {
+            font-weight: normal;
+            font-size: 0.875em;
+            line-height: 1.8em;
+            margin-bottom: 50px;
+            margin-top: 25px;
+        }
+
+        .ui-dialog-wrap a,
+        .dialog-qr {
+            font-size: 1.125em;
+            font-weight: 300;
+            margin-top: 8px;
+            display: inline-block;
+        }
+
+        #barcode {
+            display:inline-block;
+        }
+
+        .ui-dialog-wrap a:hover .icon-down {
+            background-position: -32px -32px;
+        }
+
+    .control-sprite-wrap {
+        margin-top: 25px;
+        margin-bottom: 30px;
+        height: 48px;
+        line-height: 48px;
+    }
+        .control-sprite-wrap span {
+            vertical-align: middle;
+            height: 48px;
+            margin-right: 40px;
+            font-size: 1em;
+        }
+
+        span.dialog-sprite {
+            background-image: url('../images/dialog-sprite.png');
+            width: 48px;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .ds-chart {background-position: 0px 0px;}
+        .ds-combo {background-position: -48px 0px;}
+        .ds-dialog {background-position: -96px 0px;}
+        .ds-zoombar {background-position: -144px 0px;}
+
+    .ui-dialog-wrap .arrowDown {
+        background-image: url('../images/dialog-sprite.png');
+        width: 
+        position: relative;
+        float: none;
+        top: 3px;
+        left: 5px;
+    } 
+ 
+    .dialog-qr {
+        height: 66px;
+        float: right;
+        margin-top: 0;
+
+    }
+        .dialog-qr span {
+            position: relative;
+            bottom: 40%;
+            right: 5px;
+        }
+
+    .dialog-infragistics {
+        height: 28px;
+        line-height: 28px;
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        text-align: center;
+    }
+
+    .dialog-igniteui {
+        position: absolute;
+        bottom: 28px;
+        width: 100%;
+        height: 41px;
+        line-height: 40px;
+        border-top: 1px solid #bf5a0f;
+        text-align: center;
+        background-color: #ff7814;
+    }
+
+    .ui-dialog .ui-dialog-titlebar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    div.ui-igdialog-overlay {
+        background: #1E1E1E;
+        opacity: 0.8;
+        -moz-opacity: 0.8;
+    }
+
+    .ui-dialog .ui-dialog-title {
+        float: left;
+        white-space: nowrap;
+        max-width: 90%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: .1em 0 .2em 0;
+        color: #333333;
+        text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.8);
+        font-weight: normal!important;
+    }
+
+    .ui-dialog .ui-dialog-titlebar-close .ui-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -8px 0 0 -8px;
+    }
+
+    .ui-dialog .ui-dialog-content {
+      border: 0;
+      padding: 0;
+      margin: 0;
+      background: none;
+      overflow: auto;
+    }
+
+    .ui-dialog .ui-dialog-buttonpane {
+      text-align: left;
+      border-width: 1px 0 0 0;
+      background-image: none;
+      margin-top: .5em;
+      padding: .3em 1em .5em .4em;
+    }
+
+    .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset {
+      float: right;
+    }
+
+    .ui-dialog .ui-dialog-buttonpane button {
+      margin: .5em .4em .5em 0;
+      cursor: pointer;
+    }
+
+    .ui-dialog .ui-resizable-se {
+      width: 12px;
+      height: 12px;
+      right: -5px;
+      bottom: -5px;
+    }
+    .ui-draggable .ui-dialog-titlebar {
+      cursor: move;
+    }
+
+
+.ui-igdialog  {
+    padding: 35px 20px 40px 20px;
+    background-color: #191919;
+    border: 1px solid #272727;
+    color: #666666;
+    font-size: 14px;
+    box-shadow: 0px 0px 45px rgba(0, 0, 0, 0.3);
+}
+    #indicatorDialog {
+        overflow: hidden;
+    }
+
+.ui-igdialog.about-dialog {
+    padding: 0;
+}
+
+.ui-igdialog label {
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.ui-igdialog input {
+    margin-top: 18px;
+    background-color: #111;
+    border: 1px solid #333;
+    color: #fff;
+    height: 25px;
+    width: 200px;
+}
+
+.ui-igdialog button[type=submit] {
+    background-color: #777;
+    border: 0;
+    padding: 7px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+    .ui-igdialog button[type=submit]:hover {
+        background-color: #ccc;
+        cursor: pointer;
+    }
+
+    .ui-igdialog button[type=submit]:focus {
+        outline-color: #00AADE;
+    }
+
+    .ui-igdialog button[type=submit]:active {
+        background-color: #00AADE;
+    }
+
+
+input:focus {
+    outline-color: #00aade;
+}
+
+.ui-igdialog-close-icon.ui-icon {
+    width: 32px;
+    height: 32px;
+    background-image: url('../images/ui-sprite.png');
+    background-position: -32px -64px;
+    display: inline-block;
+}
+
+.ui-igdialog-buttonclose {
+    width: 32px;
+    height: 32px;
+    display: block; 
+    float: right;
+    position: relative;
+    right: 32px;
+    top: 8px;
+}
+    .about-dialog .ui-igdialog-buttonclose {
+        right: 16px;
+    }
+
+.ui-igdialog-buttonclose.ui-state-hover .ui-igdialog-close-icon.ui-icon {
+    background-position: -32px -96px;
+}
+
+.ui-igcombo-buttonicon.ui-icon {
+    width: 32px;
+    height: 32px;
+    background-image: url('../images/ui-sprite.png');
+    background-position: -32px -224px;
+}
+
+.ui-igcombo-button.ui-state-hover .ui-igcombo-buttonicon.ui-icon {
+    background-position: -32px -257px;
+}
+
+#chartContainer {
+    margin-top: -10px;
+}
+
+@media only screen 
+and (max-width : 1025px) {
+    .ui-dialog-wrap a, .dialog-qr {
+        display: none;
+    }
+}
+
+
+@media only screen 
+and (max-width : 1000px) {
+
+    .value-change-container {
+        display: block;
+        margin-top: -10px;
+    }
+
+    .icon-decrease-value,
+    .icon-inscrease-value {
+        margin-left: -10px;
+        font-size: 1.625em;
+    }
+
+    .details {
+        font-size: 0.813em;
+    }
+
+    .stock-time {
+        top: 0px;
+    }
+
+    #chartContainer {
+        margin-top: 0px;
+    }
+
+}
+
+@media only screen 
+and (max-width : 680px) {
+    .details {
+        float: left;
+        text-align: left;
+    }
+}
+
