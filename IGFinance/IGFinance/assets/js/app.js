@@ -154,11 +154,13 @@
             },
 
             changeChartsSeriesType: function (newType, displayType) {
+                currentSeriesType = newType;
                 if (newType === "area") {
                     _changeSeriesTypeToSplineArea();
                 } else if (newType === "line") {
                     _changeSeriesTypeToLine();
                 } else {
+                    currentDisplayType = displayType;
                     _changeSeriesTypeToFinancial(displayType);
                 }
             },
@@ -223,8 +225,14 @@
             },
 
             //price chart related functions
-            _getPriceChartOptions: function () {
+            _getPriceChartOptions: function (seriesType) {
                 var desiredHeight = 0.22 * $(window).height();
+                var series;
+                if (seriesType === "financial") {
+                    series = _getFinancialSeriesWithCustom(currentDisplayType, "#00AADE");
+                } else {
+                    series = helpers.getSplineAreaSeries("#00AADE");
+                }
                 return {
                     theme: "metro",
                     width: "100%",
@@ -236,7 +244,7 @@
                     rightMargin: 30,
                     windowRectMinWidth: 0.05,
                     axes: helpers._getPriceChartAxes(),
-                    series: helpers.getSplineAreaSeries("#00AADE"),
+                    series: series,
                     syncChannel: "channel1",
                     synchronizeVertically: false,
                     syncrhonizeHorizontally: false
@@ -461,7 +469,7 @@
         ds = null,
         detailsDs = null;
 
-    var currentDate;
+    var currentDate, currentSeriesType, currentDisplayType;
 
     return {
         init: function () {
@@ -514,7 +522,7 @@
                 responseDataKey: "value.items",
                 dataSource: "http://pipes.yahooapis.com/pipes/pipe.run?_id=3e1b7fc9a1a63ea0772d20ce4573d792&_render=json&symbol=" + igFinance.getTicker(),
                 callback: function () {
-                    if (igFinance.getDetailsDataView().Symbol == undefined) {
+                    if (igFinance.getDetailsDataView() == undefined) {
                         igFinance.openDialog("noData");
                         $("#noData").text(resources.NoDataFromYahooPipe);
                     } else {
@@ -533,6 +541,7 @@
                 ticker = symbol;
                 igFinance.init();
             } else {
+                $("#js-invalid-ticker").text(resources.InvalidTicker);
                 $("#js-invalid-ticker").css("display", "block");
             }
         },
@@ -542,6 +551,7 @@
             var isDialogOpen = $("#dialog").hasClass("ui-igdialog-content") ? ($("#dialog").igDialog("option", "state") == "opened") : false;
 
             if (!isDataAvailable && isDialogOpen) {
+                $("#js-invalid-ticker").text(resources.InvalidTicker);
                     $("#js-invalid-ticker").css("display", "block");
             } else if (!isDataAvailable) {
                 igFinance.openDialog("noData");
@@ -562,7 +572,7 @@
         },
 
         initializeCharts: function () {
-            var priceChartOptions = helpers._getPriceChartOptions()
+            var priceChartOptions = helpers._getPriceChartOptions(currentSeriesType);
             $("#priceChart").igDataChart(priceChartOptions);
 
             var indicatorCharOptions = helpers._getIndicatorChartOptions();
@@ -614,8 +624,8 @@
         resizeCharts: function () {
             var windowHeight = $(window).height();
             if ($("#priceChart").children().length != 0) {
-                $("#priceChart").igDataChart("option", "height", 0.3 * windowHeight);
-                $("#indicatorChart").igDataChart("option", "height", 0.2 * windowHeight);
+                $("#priceChart").igDataChart("option", "height", 0.22 * windowHeight);
+                $("#indicatorChart").igDataChart("option", "height", 0.18 * windowHeight);
                 $("#volumeChart").igDataChart("option", "height", 0.08 * windowHeight);
 
                 if ($("#zoom_zoombar_container").length == 0) {

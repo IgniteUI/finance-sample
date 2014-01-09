@@ -1,7 +1,7 @@
 ﻿/*!@license
-* Infragistics.Web.ClientUI data source localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI data source localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -43,9 +43,9 @@ if (!$.ig.DataSourceLocale) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI common DV widget localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI common DV widget localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -73,9 +73,9 @@ if (!$.ig.Chart) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI shared localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI shared localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -99,9 +99,9 @@ if (!$.ig.SharedLocale) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI templating localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI templating localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -120,9 +120,9 @@ if (!$.ig.Templating) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Barcode localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Barcode localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -174,9 +174,9 @@ if (!$.ig.Barcode) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Combo localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Combo localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -196,9 +196,9 @@ if (!$.ig.Combo) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Dialog localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Dialog localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -220,9 +220,9 @@ if (!$.ig.Dialog) {
 	};
 }
 /*!@license
-* Infragistics.Web.ClientUI Doughnut Chart localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Doughnut Chart localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -240,9 +240,9 @@ if (!$.ig.igDoughnutChart) {
     });
 }
 /*!@license
-* Infragistics.Web.ClientUI Editors localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Editors localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -264,9 +264,9 @@ if (!$.ig.Editor) {
 	};
 }
 /*!@license
-* Infragistics.Web.ClientUI Grid localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Grid localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -578,9 +578,9 @@ if (!$.ig.Grid) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI HTML Editor localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI HTML Editor localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -716,9 +716,9 @@ if (!$.ig.HtmlEditor) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Pivot Shared localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Pivot Shared localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -743,9 +743,9 @@ if (!$.ig.PivotShared) {
     });
 }
 /*!@license
-* Infragistics.Web.ClientUI Pivot Data Selector localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Pivot Data Selector localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -774,9 +774,9 @@ if (!$.ig.PivotDataSelector) {
     });
 }
 /*!@license
-* Infragistics.Web.ClientUI Pivot Grid localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Pivot Grid localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -802,9 +802,9 @@ if (!$.ig.PivotGrid) {
     });
 }
 /*!@license
-* Infragistics.Web.ClientUI Popover localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Popover localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -826,9 +826,9 @@ if (!$.ig.Popover) {
 
 }
 /*!@license
-* Infragistics.Web.ClientUI Splitter localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Splitter localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -848,9 +848,9 @@ if (!$.ig.Splitter) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Tile Manager localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Tile Manager localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -871,9 +871,9 @@ if (!$.ig.TileManager) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Tree localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Tree localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -908,9 +908,9 @@ if (!$.ig.Tree) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Upload localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Upload localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -967,9 +967,9 @@ if (!$.ig.Upload) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Validator localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Validator localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -1003,9 +1003,9 @@ if (!$.ig.Validator) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Video Player localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Video Player localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -1059,9 +1059,9 @@ if (!$.ig.VideoPlayer) {
 }
 
 /*!@license
-* Infragistics.Web.ClientUI Zoombar localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI Zoombar localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
@@ -1083,9 +1083,9 @@ if (!$.ig.Zoombar) {
 
 }
 /*!@license
-* Infragistics.Web.ClientUI common utilities localization resources 13.2.20132.1010
+* Infragistics.Web.ClientUI common utilities localization resources 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *

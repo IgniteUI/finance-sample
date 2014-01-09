@@ -1,6 +1,6 @@
-﻿/*!@license Infragistics.Web.Loader 13.2.20132.1010
+﻿/*!@license Infragistics.Web.Loader 13.2.20132.2064
 *
-* Copyright (c) 2011-2013 Infragistics Inc.
+* Copyright (c) 2011-2014 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
