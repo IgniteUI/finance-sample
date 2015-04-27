@@ -1,9 +1,11 @@
 ﻿﻿/* Japan +*/
-/*global $ */
+
+/*global jQuery */
+(function ($) {
 $.ig = $.ig || {};
 $.ig.regional = $.ig.regional || {};
 if ($.datepicker && $.datepicker.regional) {
-	$.datepicker.regional['ja'] = {
+	$.datepicker.regional.ja = {
 		closeText: '閉じる',
 		prevText: '&#x3c;前',
 		nextText: '次&#x3e;',
@@ -45,3 +47,4 @@ $.ig.regional.ja = {
 if ($.ig.setRegionalDefault) {
 	$.ig.setRegionalDefault('ja');
 }
+})(jQuery);

@@ -1,12 +1,14 @@
 ﻿/*!@license
-* Infragistics.Web.ClientUI templating localization resources 13.2.20132.2064
+* Infragistics.Web.ClientUI templating localization resources 15.1.20151.1005
 *
-* Copyright (c) 2011-2014 Infragistics Inc.
+* Copyright (c) 2011-2015 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
 */
 
+/*global jQuery */
+(function ($) {
 $.ig = $.ig || {};
 
 if (!$.ig.Templating) {
@@ -18,3 +20,4 @@ if (!$.ig.Templating) {
 		}
 	});
 }
+})(jQuery);

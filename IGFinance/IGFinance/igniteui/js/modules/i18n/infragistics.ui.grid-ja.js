@@ -1,12 +1,14 @@
 ﻿/*!@license
-* Infragistics.Web.ClientUI Grid localization resources 13.2.20132.2064
+* Infragistics.Web.ClientUI Grid localization resources 15.1.20151.1005
 *
-* Copyright (c) 2011-2014 Infragistics Inc.
+* Copyright (c) 2011-2015 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
 */
 
+/*global jQuery */
+(function ($) {
 $.ig = $.ig || {};
 
 if (!$.ig.Grid) {
@@ -34,7 +36,10 @@ if (!$.ig.Grid) {
 			templatingEnabledButNoTemplate: "jQueryTemplating は True に設定されていますが、rowTemplate が定義されていません。",
 			expandTooltip: "行の展開",
 			collapseTooltip: "行の縮小",
-			movingNotAllowedOrIncompatible: "要求した列の移動を実行できません。列が見つからないか、結果が列レイアウトと互換性のない可能性があります。"
+			movingNotAllowedOrIncompatible: "要求した列の移動を実行できません。列が見つからないか、結果が列レイアウトと互換性のない可能性があります。",
+			allColumnsHiddenOnInitialization: "すべてのグリッド列を非表示にできません。列を 1 つ以上表示する必要があります。",
+			columnVirtualizationNotSupportedWithPercentageWidth: "グリッドの幅がパーセンテージで定義されている場合、列の仮想化がサポートされません。",
+			mixedWidthsNotSupported: "混合 / 一部の列幅の設定はサポートされません。一部の列幅をパーセント値で定義し、その他の列幅をピクセルで定義する (または列幅を定義しない) という設定はサポートされません。"
 		}
 	});
 
@@ -45,26 +50,28 @@ if (!$.ig.Grid) {
 		locale: {
 			startsWithNullText: "～で始まる",
 			endsWithNullText: "～で終わる",
-			containsNullText: "含む",
-			doesNotContainNullText: "含まない",
-			equalsNullText: "等しい",
-			doesNotEqualNullText: "等しくない",
+			containsNullText: "～を含む",
+			doesNotContainNullText: "～を含まない",
+			equalsNullText: "～に等しい",
+			doesNotEqualNullText: "～に等しくない",
 			greaterThanNullText: "～より大きい",
 			lessThanNullText: "～より小さい",
 			greaterThanOrEqualToNullText: "以上",
 			lessThanOrEqualToNullText: "以下",
 			onNullText: "指定日",
 			notOnNullText: "指定日以外",
+			afterNullText: "～の後",
+			beforeNullText: "～の前",
 			emptyNullText: "空",
 			notEmptyNullText: "空以外",
 			nullNullText: "null 値",
 			notNullNullText: "null 値以外",
 			startsWithLabel: "～で始まる",
 			endsWithLabel: "～で終わる",
-			containsLabel: "含む",
-			doesNotContainLabel: "含まない",
-			equalsLabel: "等しい",
-			doesNotEqualLabel: "等しくない",
+			containsLabel: "～を含む",
+			doesNotContainLabel: "～を含まない",
+			equalsLabel: "～に等しい",
+			doesNotEqualLabel: "～に等しくない",
 			greaterThanLabel: "～より大きい",
 			lessThanLabel: "～より小さい",
 			greaterThanOrEqualToLabel: "以上",
@@ -82,7 +89,7 @@ if (!$.ig.Grid) {
 			lastYearLabel: "昨年",
 			nextYearLabel: "来年",
 			clearLabel: "フィルターをクリア",
-			noFilterLabel: "0",
+			noFilterLabel: "なし",
 			onLabel: "指定日",
 			notOnLabel: "指定日以外",
 			advancedButtonLabel: "詳細",
@@ -98,7 +105,7 @@ if (!$.ig.Grid) {
 			filterSummaryTitleLabel: "検索結果",
 			filterSummaryTemplate: "一致するレコード: ${matches}",
 			filterDialogClearAllLabel: "すべてクリア",
-			tooltipTemplate: "${condition} フィルターを適用しています",
+			tooltipTemplate: "適用済みのフィルター: ${condition}",
 			featureChooserText: "フィルターの非表示",
 			featureChooserTextHide: "フィルターの表示",
 			featureChooserTextAdvancedFilter: "フィルター",
@@ -130,7 +137,8 @@ if (!$.ig.Grid) {
 			modalDialogRootLevelHierarchicalGrid: 'ルート',
 			modalDialogDropDownButtonCaption: "クリックして表示状態を切り替える",
 			modalDialogButtonApplyText: '適用',
-			modalDialogButtonCancelText: 'キャンセル'
+			modalDialogButtonCancelText: 'キャンセル',
+			fixedVirualizationNotSupported: 'GroupBy 機能は、固定仮想化を使用した場合に動作しません。'
 		}
 	});
 
@@ -155,6 +163,15 @@ if (!$.ig.Grid) {
 		}
 	});
 
+		$.ig.GridResizing = $.ig.GridResizing || {};
+
+		$.extend($.ig.GridResizing, {
+			locale: {
+				noSuchVisibleColumn: "指定したキーを持つ表示されている列が見つかりませんでした。表示されている列のみをサイズ変更できます。",
+				resizingAndFixedVirtualizationNotSupported: "仮想化または列の仮想化が有効で、virtualizationMode が fixed の場合、列のサイズ変更機能は動作しません。この例外を回避するには、virtualizationMode を continuous に設定するか、rowVirtualization のみを使用します。"
+			}
+		});
+
 	$.ig.GridPaging = $.ig.GridPaging || {};
 
 	$.extend($.ig.GridPaging, {
@@ -178,16 +195,26 @@ if (!$.ig.Grid) {
 			firstPageTooltip: "最初のページに移動",
 			lastPageTooltip: "最後のページに移動",
 			pageTooltipFormat: "ページ ${index}",
-			pagerRecordsLabelTemplate: "${startRecord} - ${endRecord} / ${recordCount} レコード"
-		}
-	});
+			pagerRecordsLabelTemplate: "${startRecord} - ${endRecord} / ${recordCount} レコード",
+			invalidPageIndex: "無効なページ インデックス - 0 以上で、ページ カウントより小さく設定してください。"
+		    }
+	    });
+
+    $.ig.GridSelection = $.ig.GridSelection || {};
+
+    $.extend($.ig.GridSelection, {
+        locale: {
+            persistenceImpossible: "状態の間に選択を保持するには、igGrid の primaryKey オプションを設定する必要があります。このエラーを回避するには、プライマリ キーを定義するか、永続化を無効にします。"
+        }
+    });
 
 	$.ig.GridRowSelectors = $.ig.GridRowSelectors || {};
 
 	$.extend($.ig.GridRowSelectors, {
 
 		locale: {
-			selectionNotLoaded: "igGridSelection は初期化されていません。このエラー メッセージを回避するには、グリッドの選択機能を有効にするか、行セレクター機能の requireSelection プロパティを false に設定してください。"
+		    selectionNotLoaded: "igGridSelection は初期化されていません。このエラー メッセージを回避するには、グリッドの選択機能を有効にするか、行セレクター機能の requireSelection プロパティを false に設定してください。",
+		    columnVirtualizationEnabled: "列仮想化が有効な場合、igGridRowSelectors はサポートされません。グリッドの 'rowVirtualization' プロパティを true に設定するか、仮想化モードを 'continuous' に設定すると、行仮想化を有効にします。"
 		}
 	});
 
@@ -196,7 +223,7 @@ if (!$.ig.Grid) {
 	$.extend($.ig.GridSorting, {
 
 		locale: {
-			sortedColumnTooltipFormat: '${direction}に並べ替え',
+			sortedColumnTooltipFormat: '${direction}で並べ替え済み',
 			unsortedColumnTooltip: '列を並べ替える',
 			ascending: '昇順',
 			descending: '降順',
@@ -256,7 +283,9 @@ if (!$.ig.Grid) {
 			noPrimaryKeyException: '行が削除された後に更新操作をサポートするには、アプリケーションの igGrid のオプションで primaryKey を定義する必要があります。',
 			hiddenColumnValidationException: '検証が有効な非表示の列がある行は編集できません。',
 			dataDirtyException: 'グリッドに保留中のトランザクションがあります。データのレンダリングに影響する場合があります。例外を回避するには、アプリケーションで igGrid の autoCommit オプションを有効にするか、igGridUpdating の dataDirty イベントを処理して false を返す必要があります。イベントを処理する際に、アプリケーションで igGrid のデータを commit() することができます。',
-			rowEditDialogCaptionLabel: '行データの編集'
+			recordOrPropertyNotFoundException: '指定したレコードまたはプロパティがデータ ソースで見つかりませんでした。',
+			rowEditDialogCaptionLabel: '行データの編集',
+			excelNavigationNotSupportedWithCurrentEditMode: "Excel ナビゲーション モードは、セル編集および行編集のみをサポートします。このエラーを回避するには、excelNavigationMode を無効にするか、editMode を cell または row に設定します。"
 		}
 	});
 
@@ -270,6 +299,7 @@ if (!$.ig.Grid) {
             movingDialogCaptionButtonAsc: '上へ移動',
             movingDialogCaptionText: '列の移動',
             movingDialogDisplayText: '列の移動',
+            movingDialogDropTooltipText: "ここへ移動",
             dropDownMoveLeftText: '左へ移動',
             dropDownMoveRightText: '右へ移動',
             dropDownMoveFirstText: '最初へ移動',
@@ -282,32 +312,67 @@ if (!$.ig.Grid) {
 
     $.ig.ColumnFixing = $.ig.ColumnFixing || {};
 
-    $.extend($.ig.ColumnFixing, {
-        locale: {
-            headerFixButtonText: 'クリックしてこの列を固定',
-            headerUnfixButtonText: 'クリックしてこの列の固定を解除',
-            featureChooserTextFixedColumn: '列の固定',
-            featureChooserTextUnfixedColumn: '列の固定解除',
-            groupByNotSupported: 'igGridGroupBy が ColumnFixing とサポートされていません。',
-            virtualizationNotSupported: '仮想化は ColumnFixing でサポートされていません。',
-            columnMovingNotSupported: 'igGridColumnMoving が ColumnFixing とサポートされていません。',
-            hidingNotSupported: 'igGridHiding が ColumnFixing とサポートされていません。',
-            hierarchicalGridNotSupported: 'igHierarchicalGrid が ColumnFixing とサポートされていません。',
-            responsiveNotSupported: 'igGridResponsive が ColumnFixing とサポートされていません。',
-            noGridWidthHeightNotSupported: 'グリッドの幅および高さが設定されない場合、ColumnFixing はサポートされていません。'
-        }
-    });
+        $.extend($.ig.ColumnFixing, {
+            locale: {
+                headerFixButtonText: 'クリックしてこの列を固定',
+                headerUnfixButtonText: 'クリックしてこの列の固定を解除',
+                featureChooserTextFixedColumn: '列の固定',
+                featureChooserTextUnfixedColumn: '列の固定解除',
+                groupByNotSupported: 'igGridGroupBy が ColumnFixing とサポートされていません。',
+                virtualizationNotSupported: 'グリッドの virtualization オプションは行および列の仮想化を有効にします。列仮想化は ColumnFixing でサポートされていません。グリッドの rowVirtualization オプションを true に設定してください。',
+                columnVirtualizationNotSupported: '列仮想化は ColumnFixing でサポートされていません。',
+                columnMovingNotSupported: 'igGridColumnMoving が ColumnFixing とサポートされていません。',
+                hidingNotSupported: 'igGridHiding が ColumnFixing とサポートされていません。',
+                hierarchicalGridNotSupported: 'igHierarchicalGrid が ColumnFixing とサポートされていません。',
+                responsiveNotSupported: 'igGridResponsive が ColumnFixing とサポートされていません。',
+                noGridWidthNotSupported: 'ColumnFixing を使用する場合、グリッドの幅をピクセル単位で指定する必要があります。',
+                defaultColumnWidthInPercentageNotSupported: "ColumnFixing を使用する場合、パーセンテージ単位のデフォルトの列幅はサポートされていません。",
+                columnsWidthShouldBeSetInPixels: 'ColumnFixing が有効な場合、すべてのグリッド列の幅はピクセル単位で設定する必要があります。次のキーを持つ列を確認してください: ',
+                unboundColumnsNotSupported: 'ColumnFixing は非バインド列でサポートされません。',
+                excelNavigationNotSupportedWithCurrentEditMode: "Excel ナビゲーション モードは、セル編集および行編集のみをサポートします。このエラーを回避するには、excelNavigationMode を無効にするか、editMode を cell または row に設定します。",
+                internalErrors: {
+                    none: 'エラーなし。',
+                    notValidIdentifier: '指定した識別子を持つ列はありません。',
+                    fixingRefused: '固定されていない列が 1 列しかないため、固定を実行できません。',
+                    fixingRefusedMinVisibleAreaWidth: '固定されていない列の表示領域の最小幅により、列固定を実行できません。',
+                    alreadyHidden: '固定/固定解除しようとしている列は非表示列です。',
+                    alreadyUnfixed: '固定解除しようとしている列はすでに固定解除されています。',
+                    alreadyFixed: '固定しようとしている列はすでに固定されています。',
+                    unfixingRefused: '表示している固定列が 1 列、非表示の固定列が 1 列以上あるため、固定解除を実行できません。',
+                    targetNotFound: 'ターゲット列は指定したターゲット識別子で見つかりませんでした。'
+                }
+            }
+        });
 
-    $.ig.GridLoadOnDemand = $.ig.GridLoadOnDemand || {};
+    $.ig.GridAppendRowsOnDemand = $.ig.GridAppendRowsOnDemand || {};
 
-    $.extend($.ig.GridLoadOnDemand, {
+    $.extend($.ig.GridAppendRowsOnDemand, {
     	locale: {
     	    loadMoreDataButtonText: 'その他のデータを読み込む',
-    	    loadOnDemandRequiresHeight: 'ロードオンデマンド機能を使用するには高さを設定する必要があります。',
-    	    groupByNotSupported: 'igGridGroupBy は LoadOnDemand でサポートされていません。',
-    	    pagingNotSupported: 'igGridPaging は LoadOnDemand でサポートされていません。',
-    	    cellMergingNotSupported: 'igGridCellMerging は LoadOnDemand でサポートされていません。',
-    	    virtualizationNotSupported: '仮想化は LoadOnDemand でサポートされていません。'
+    	    appendRowsOnDemandRequiresHeight: 'AppendRowsOnDemand 機能を使用するには高さを設定する必要があります。',
+    	    groupByNotSupported: 'igGridGroupBy は AppendRowsOnDemand でサポートされていません。',
+    	    pagingNotSupported: 'igGridPaging は AppendRowsOnDemand でサポートされていません。',
+    	    cellMergingNotSupported: 'igGridCellMerging は AppendRowsOnDemand でサポートされていません。',
+    	    virtualizationNotSupported: '仮想化は AppendRowsOnDemand でサポートされていません。'
     	}
     });
+
+
+    $.ig.igGridResponsive = $.ig.igGridResponsive || {};
+
+    $.extend($.ig.igGridResponsive, {
+    	locale: {
+    	    fixedVirualizationNotSupported: 'igGridResponsive が固定仮想化とサポートされていません。'
+    	}
+    });
+
+    $.ig.igGridMultiColumnHeaders = $.ig.igGridMultiColumnHeaders || {};
+
+    $.extend($.ig.igGridMultiColumnHeaders, {
+    	locale: {
+    	    multiColumnHeadersNotSupportedWithColumnVirtualization: '複数列ヘッダー機能は columnVirtualization ではサポートされていません。'
+    	}
+    });
+
 }
+})(jQuery);

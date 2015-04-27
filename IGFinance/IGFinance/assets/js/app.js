@@ -336,21 +336,20 @@
                     dataSource: helpers._getIndicatorComboDataSource(),
                     textKey: "text",
                     valueKey: "type",
-                    autoComplete: true,
                     filteringType: "local",
                     noMatchFoundText: "No match found please try again",
-                    selectedItems: [{
+                    initialSelectedItems: [{
                         index: 5
                     }],
                     selectionChanged: function (evt, ui) {
                         if (ui.items && ui.items[0]) {
-                            document.getElementsByClassName("avt-value")[0].innerHTML = ui.items[0].text;
-                            helpers._changeIndicator(ui.items[0].value);
+                            document.getElementsByClassName("avt-value")[0].innerHTML = ui.items[0].data.text;
+                            helpers._changeIndicator(ui.items[0].data.type);
                         }
                     },
                     dropDownClosed: function (evt, ui) {
                         var text = $("#indicatorCombo").igCombo("text");
-                        $("#indicatorCombo").igCombo("filter", null, "");
+                        $("#indicatorCombo").igCombo("filter", "", null);
                         $("#indicatorCombo").igCombo("text", text);
                     },
                 };
@@ -590,16 +589,14 @@
             var selectableOptions = helpers.getSelectableOptions();
             $("#selectable").selectable(selectableOptions);
 
-            $("#indicatorCombo").data("igCombo").fieldElem.on("click", function (e) {
+            $("#indicatorCombo").igCombo("textInput").on("click", function (e) {
                 $(this).select();
             });
 
             var desiredZoombarHeight = 0.10 * $(window).height();
             if ($("#zoom_zoombar_container").length > 0) {
                 $("#zoom").igZoombar("clone").igDataChart({
-                    dataSource: igFinance.getDataView(),
-                    axes: helpers._getPriceChartAxes(),
-                    series: helpers.getSplineAreaSeries("#00AADE"),
+                    dataSource: igFinance.getDataView()
                 });
             } else {
                 $("#zoom").igZoombar({
@@ -637,35 +634,32 @@
         showInfoDialog: function () {
             var element = "about-dialog";
             var ShowcaseInfo = resources.ShowCaseInfo;
-            $("body").append("<div id='" + element + "' style='display:none;'>" + ShowcaseInfo +
-            "</div>");
+            if ($("#" + element).length > 0) {
+                $("#" + element).igDialog("option", "state", "opened");
+            } else {
+                $("body").append("<div id='" + element + "' style='display:none;'>" + ShowcaseInfo +
+                "</div>");
 
-            $("#" + element).igDialog({
-                state: "opened",
-                modal: true,
-                draggable: false,
-                resizable: false,
-                zIndex: 10000000,
-                height: "507px",
-                width: "700px",
-                dialogClass: "about-dialog",
-                stateChanging: function (evt, ui) {
-                    // Check the igDialog state  
-                    if (ui.action === "close") {
-                        $("#" + element).igDialog("destroy");
-                        $("#" + element).remove();
-                    }
-                }
-            });
+                $("#" + element).igDialog({
+                    state: "opened",
+                    modal: true,
+                    draggable: false,
+                    resizable: false,
+                    zIndex: 10000000,
+                    height: "507px",
+                    width: "700px",
+                    dialogClass: "about-dialog"
+                });
 
-            $("#barcode").igQRCodeBarcode({
-                height: "66px",
-                width: "66px",
-                errorCorrectionLevel: "low",
-                barsFillMode: "ensureEqualSize",
-                stretch: "none",
-                data: document.URL
-            });
+                $("#barcode").igQRCodeBarcode({
+                    height: "66px",
+                    width: "66px",
+                    errorCorrectionLevel: "low",
+                    barsFillMode: "ensureEqualSize",
+                    stretch: "none",
+                    data: document.URL
+                });
+            }
         },
 
         loadResources: function () {

@@ -747,9 +747,8 @@ header {
   background-color: #CCCCCC;
   position: absolute;
   z-index: 2;
-  width: 8px;
-  height: 8px;
-  padding: 8px;
+  width: 24px;
+  height: 32px;
   right: -8px;
   cursor: pointer;
 }
@@ -785,17 +784,20 @@ header {
 
 .ui-slider-horizontal {
   height: 24px;
+  width: 276px;
+  margin: 0 auto;
   background-color: #777777!important;
   border: 0!important;
+  margin-left: 7px
 }
 
 .ui-slider-horizontal .ui-slider-handle {
   margin-left: -7px;
+  margin-top: -4px;
 }
 
 .ui-slider-horizontal .ui-slider-range {
   top: 0;
-  height: 100%;
   background-image: none;
   background-position: 0px -4px;
   background-repeat: repeat-x;
@@ -846,132 +848,198 @@ header {
 
 /* COMBO */ 
 
+.ui-igcombo-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: visible;
+    z-index: 1000;
+    width: 200px;
+    height: 32px;
+}
 
 .ui-igcombo {
- padding: 0px !important;
-}
-.ui-igcombo .ui-icon {
- float: none
-}
-.ui-igcombo-field,
-.ui-igcombo .ui-igcombo-field {
- left: auto !important;
- top: auto !important;
- margin: 0px !important;
- border: 0;
- outline: 0;
- padding: 1px 2px 1px 2px;
-}
-.ui-igcombo-field::-ms-clear
-{
- display: none;
-}
-.ui-igcombo-nulltext {
- color: #999999;
-}
-.ui-igcombo-button {
- display: inline-block;
- cursor: pointer;
- overflow: hidden;
-}
-.ui-igcombo .ui-igcombo-button-rtl,
-.ui-widget-content .ui-igcombo-button-rtl,
-.ui-igcombo-button-rtl {
- border-width: 0px 1px 0px 0px;
-}
-.ui-igcombo .ui-igcombo-button-ltr,
-.ui-widget-content .ui-igcombo-button-ltr,
-.ui-igcombo-button-ltr {
- border-width: 0px 0px 0px 1px;
-}
-.ui-igcombo-clear,
-.ui-widget-content .ui-igcombo-clear,
-.ui-igcombo .ui-igcombo-clear {
- display: inline-block;
- cursor: pointer;
- background: none;
- overflow: hidden;
- border: 0;
-}
-.ui-igcombo-list,
-.ui-igcombo .ui-igcombo-list {
- z-index: 100000;
- font-size: 0.95em;
- background-image: none;
- border: 1px solid #333;
-}
-.ui-igcombo-listitemholder,
-.ui-igcombo-list .ui-igcombo-listitemholder {
- margin: 0;
- padding: 0;
- border: none;
- background: none;
-}
-.ui-igcombo-listitem,
-.ui-igcombo-list .ui-igcombo-listitem {
- list-style-type: none;
- margin: 0;
- overflow: hidden;
- white-space: nowrap;
- border: 0;
- background-image: none;
- float: left;
- padding:0 0.2em;
- cursor: default;
- position: relative;
- outline: 0;
-}
-.ui-igcombo-listitem-match {
- font-weight: bold
-}
-.ui-igcombo-checkbox {
- position: absolute;
- cursor: pointer
-}
-.ui-igcombo-listitemtextwithcheckbox {
- display: block;
- position: relative;
-}
-.ui-igcombo-waitfiltering {
- opacity: 0.5;
- filter: alpha(opacity=50);
-}
-.ui-igcombo-waitfiltering input {
- background: #d8d8d8;
-}
-.ui-igcombo-buttonicon,
-.ui-igcombo-clearicon,
-.ui-igcombo-checkbox-on {
- display: block
+    height: 100%;
+    -webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
 }
 
-#indicatorCombo {
-    margin-top: 10px;
-    border: 1px solid #333333;
-    background-color: #111;
+.ui-igcombo-mode-dropdown .ui-igcombo-field, .ui-igcombo-mode-readonlylist .ui-igcombo-field {
+    cursor: pointer;
 }
 
-.ui-igcombo-field, .ui-igcombo .ui-igcombo-field,
+.ui-igcombo-fieldholder { 
+	height: 100%;
+	overflow: hidden;
+}
+
+.ui-igcombo.ui-widget .ui-igcombo-clear {
+    background-color: #fff;
+}
+
+.ui-igcombo-button, .ui-igcombo-clear {
+	float: right;
+	position: relative;
+	height: 100%;
+    min-width: 16px;
+    min-height: 16px;
+    cursor: pointer;
+}
+
+.ui-igcombo-mode-readonly .ui-igcombo-button, .ui-igcombo-mode-readonly .ui-igcombo-clear {
+    cursor: default;
+}
+
+.ui-igcombo-button.ui-state-default.ui-igcombo-button-ltr {
+    border-width: 0px 0px 0px 1px;
+}
+
+.ui-igcombo-button.ui-state-default.ui-igcombo-button-ltr.ui-state-hover {
+    border-width: 0px 0px 0px 1px;
+}
+
+.ui-igcombo-field {
+	width: 100%;
+	height: 100%;
+	border: none;
+	margin: 0;
+	padding: 1px 2px 1px 2px;
+    outline: 0;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+.ui-igcombo-field::-ms-clear {
+    display: none;
+}
+
+.ui-igcombo-list {
+    position: absolute;
+    width: 100%;
+    font-size: 1em;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-top: 0px;
+    z-index: 10000;
+    -webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+.ui-igcombo-dropdown-overflow {
+    overflow: hidden;
+}
+
 .ui-igcombo-listitemholder {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow-x: hidden;
+}
+
+.ui-igcombo-listitemholder .ui-igcombo-listitem {
+    position: relative;
+	padding: 5px;
+    border: none;
+    cursor: default;
+	white-space: nowrap;
+    background-image: none;
     background-color: #111;
-    color: #fff;
-    padding: 10px;
 }
 
-.ui-igcombo-listitem, .ui-igcombo-list .ui-igcombo-listitem {
-    background-color: #111;
-    color: #fff;
-    padding: 10px;
-    font-size: 14px;
+.ui-igcombo-listitemholder .ui-igcombo-listitem:hover {
+    background-color: #00AADE;
+    cursor: pointer;
 }
 
-.ui-igcombo-listitem-hover {
-    background-color: #00AADE!important;
-    cursor: pointer!important;
+.ui-igcombo-listitemtextwithcheckbox {
+    margin-left: 18px;
 }
 
+.ui-igcombo-checkbox {
+    position: absolute;
+    top: 50%;
+}
 
+.ui-igcombo-checkbox.ui-igcheckbox-small {
+    margin-top: -7.5px;
+}
 
+.ui-igcombo-no-top-corners {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+.ui-igcombo-scrollholder {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    z-index: 1;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.ui-igcombo-highlight {
+    font-weight: bold;
+}
+
+.ui-igcombo-no-border {
+    border-width: 0px;
+}
+
+.ui-igcombo-loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1000000;
+    background-color: rgba(255, 255, 255, 0.35);
+    background-image: url("../images/igLoadingSmall.gif");
+    background-repeat: no-repeat;
+    background-position: 49% 49%;
+    background-size: 48px 48px;
+}
+
+.ui-igcombo-nomatchfound {
+    cursor: default;
+    padding: 4px;
+    border: none;
+}
+
+/* Prevent all duplicating borders of drop down list items */
+li.ui-igcombo-listitem.ui-state-active + li.ui-igcombo-listitem.ui-state-active {
+    border-top-color: transparent;
+}
+
+li.ui-igcombo-listitem.ui-igcombo-item-in-focus + li.ui-igcombo-listitem.ui-igcombo-item-in-focus {
+    border-top-color: transparent;
+}
+
+li.ui-igcombo-listitem.ui-state-active + li.ui-igcombo-listitem.ui-igcombo-item-in-focus {
+    border-top-color: transparent;
+}
+
+li.ui-igcombo-listitem.ui-igcombo-item-in-focus + li.ui-igcombo-listitem.ui-state-active {
+    border-top-color: transparent;
+}
+
+li.ui-igcombo-listitem.ui-state-hover + li.ui-igcombo-listitem.ui-state-active {
+    border-top-color: transparent;
+}
+
+li.ui-igcombo-listitem.ui-state-active + li.ui-igcombo-listitem.ui-state-hover {
+    border-top-color: transparent;
+}
+
+li.ui-igcombo-listitem.ui-state-hover + li.ui-igcombo-listitem.ui-igcombo-item-in-focus {
+    border-top-color: transparent;
+}
+
+li.ui-igcombo-listitem.ui-igcombo-item-in-focus + li.ui-igcombo-listitem.ui-state-hover {
+    border-top-color: transparent;
+}
 /* Icons
 ----------------------------------*/
 /* states and images */
@@ -1381,10 +1449,12 @@ header {
 }
     #indicatorDialog {
         overflow: hidden;
+        width: 330px!important; /* Due to control architecture. */
+        height: 130px!important; /* Due to igCombo new height, the control does not calculate the height properly and a scroll appears on ui.igdialog-content */
     }
 
-.ui-igdialog.about-dialog {
-    padding: 0;
+#about-dialog {
+    padding: 0px;
 }
 
 .ui-igdialog label {
@@ -1401,25 +1471,32 @@ header {
     width: 200px;
 }
 
+.ui-igdialog input.ui-igcombo-field {
+    margin-top: 0px;
+    height: 100%;
+    width: 100%;
+}
+
 .ui-igdialog button[type=submit] {
-    background-color: #777;
+    background-color: #333;
+    color: #fff;
     border: 0;
     padding: 7px;
     font-size: 0.9em;
     font-weight: bold;
 }
     .ui-igdialog button[type=submit]:hover {
-        background-color: #ccc;
+        color: #00AADE;
         cursor: pointer;
     }
 
-    .ui-igdialog button[type=submit]:focus {
-        outline-color: #00AADE;
-    }
-
-    .ui-igdialog button[type=submit]:active {
-        background-color: #00AADE;
-    }
+ /*    .ui-igdialog button[type=submit]:focus {
+     outline-color: #00AADE;
+ }
+ 
+ .ui-igdialog button[type=submit]:active {
+     background-color: #00AADE;
+ } */
 
 
 input:focus {
@@ -1456,6 +1533,7 @@ input:focus {
     height: 32px;
     background-image: url('../images/ui-sprite.png');
     background-position: -32px -224px;
+    background-color: #333;
 }
 
 .ui-igcombo-button.ui-state-hover .ui-igcombo-buttonicon.ui-icon {

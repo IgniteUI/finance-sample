@@ -1,12 +1,14 @@
 ﻿/*!@license
-* Infragistics.Web.ClientUI HTML Editor localization resources 13.2.20132.2064
+* Infragistics.Web.ClientUI HTML Editor localization resources 15.1.20151.1005
 *
-* Copyright (c) 2011-2014 Infragistics Inc.
+* Copyright (c) 2011-2015 Infragistics Inc.
 *
 * http://www.infragistics.com/
 *
 */
 
+/*global jQuery */
+(function ($) {
 $.ig = $.ig || {};
 
 if (!$.ig.HtmlEditor) {
@@ -58,8 +60,6 @@ if (!$.ig.HtmlEditor) {
 			linkTargetTopmostWindowDialogText: '最上位のウィンドウで開く',
 			applyButtonTitle: '適用',
 			cancelButtonTitle: 'キャンセル',
-			collapseButtonTitle: '縮小:',
-			expandButtonTitle: '展開:',
 			defaultToolbars: {
 			    textToolbar: "テキスト操作ツールバー",
 			    formattingToolbar: "テキスト書式設定ツールバー",
@@ -111,27 +111,27 @@ if (!$.ig.HtmlEditor) {
 					{ text: "Zapf Dingbats", value: "Zapf Dingbats" },
 					{ text: "New York", value: "New York" }
 				]
-			}
-
-			,
+			},
 			fontSizes: [
-				{ text: "1", value: "1 (8pt)", style: "xx-small"},
-				{ text: "2", value: "2 (9pt)", style: "x-small" },
-				{ text: "3", value: "3 (10pt)", style: "small" },
-				{ text: "4", value: "4 (12pt)", style: "medium" },
-				{ text: "5", value: "5 (14pt)", style: "large" },
-				{ text: "6", value: "6 (16pt)", style: "x-large" },
-				{ text: "7", value: "7 (18pt)", style: "xx-large" }
+				{ text: "1", value: "7.5 pt" },
+				{ text: "2", value: "10 pt" },
+				{ text: "3", value: "12 pt" },
+				{ text: "4", value: "13.5 pt" },
+				{ text: "5", value: "18 pt" },
+				{ text: "6", value: "24 pt" },
+				{ text: "7", value: "36 pt" }
 			],
 			formatsList: [
-				{ text: "h1", value: "ヘッダー 1" },
-				{ text: "h2", value: "ヘッダー 2" },
-				{ text: "h3", value: "ヘッダー 3" },
-				{ text: "h4", value: "ヘッダー 4" },
-				{ text: "h5", value: "ヘッダー 5" },
-				{ text: "h6", value: "ヘッダー 6" },
+				{ text: "h1", value: "見出し 1" },
+				{ text: "h2", value: "見出し 2" },
+				{ text: "h3", value: "見出し 3" },
+				{ text: "h4", value: "見出し 4" },
+				{ text: "h5", value: "見出し 5" },
+				{ text: "h6", value: "見出し 6" },
+                { text: "p", value: "標準" }
 			]
 		}
 
 	});
 }
+})(jQuery);
